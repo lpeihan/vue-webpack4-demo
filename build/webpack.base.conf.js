@@ -1,8 +1,10 @@
 "use strict";
 
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const { resolve, assetsPath } = require("./utils");
+const vueLoaderConf = require("./vue-loader.conf");
 
 module.exports = {
   context: resolve(),
@@ -24,21 +26,29 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: "vue-loader",
-        options: {}
+        options: vueLoaderConf
       },
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        use: "babel-loader"
+        use: "babel-loader",
+        exclude: file => /node_modules/.test(file) && !/\.vue\.js/.test(file)
       },
       {
         test: /\.css$/,
-        use: ["vue-style-loader", "css-loader", "postcss-loader"]
+        use: [
+          process.env.NODE_ENV === "development"
+            ? "vue-style-loader"
+            : MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader"
+        ]
       },
       {
         test: /\.styl(us)?$/,
         use: [
-          "vue-style-loader",
+          process.env.NODE_ENV === "development"
+            ? "vue-style-loader"
+            : MiniCssExtractPlugin.loader,
           "css-loader",
           "postcss-loader",
           "stylus-loader"

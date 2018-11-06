@@ -1,10 +1,12 @@
+"use strict";
+
 const webpack = require("webpack");
 const webpackDevServer = require("webpack-dev-server");
 const chalk = require("chalk");
 // const opn = require("opn");
 
 const webpackDevConf = require("./webpack.dev.conf");
-const { resolve, formatUrl } = require("./utils");
+const { resolve } = require("./utils");
 
 const port = 9090;
 
@@ -26,12 +28,13 @@ const server = new webpackDevServer(compiler, {
   quiet: true,
   stats: {
     colors: true
-  }
+  },
+  historyApiFallback: false
 });
 
 server.listen(port, "0.0.0.0", () => {
-  const localUrl = formatUrl("http", "localhost", port);
-  const networkUrl = formatUrl("http", require("address").ip(), port);
+  const localUrl = `http://localhost:${port}`;
+  const networkUrl = `http://${require("address").ip()}:${port}`;
 
   console.log();
   console.log(
