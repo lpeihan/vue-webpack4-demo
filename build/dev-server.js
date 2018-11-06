@@ -1,9 +1,10 @@
-const webpackDevConf = require("./webpack.dev.conf");
 const webpack = require("webpack");
 const webpackDevServer = require("webpack-dev-server");
-const { resolve, prepareUrls } = require("./utils");
 const chalk = require("chalk");
 // const opn = require("opn");
+
+const webpackDevConf = require("./webpack.dev.conf");
+const { resolve, formatUrl } = require("./utils");
 
 const port = 9090;
 
@@ -29,7 +30,8 @@ const server = new webpackDevServer(compiler, {
 });
 
 server.listen(port, "0.0.0.0", () => {
-  const { localUrl, networkUrl } = prepareUrls("http", "localhost", port);
+  const localUrl = formatUrl("http", "localhost", port);
+  const networkUrl = formatUrl("http", require("address").ip(), port);
 
   console.log();
   console.log(
