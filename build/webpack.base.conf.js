@@ -27,6 +27,11 @@ module.exports = {
         options: {}
       },
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: "babel-loader"
+      },
+      {
         test: /\.css$/,
         use: ["vue-style-loader", "css-loader", "postcss-loader"]
       },
