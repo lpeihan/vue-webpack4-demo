@@ -3,9 +3,9 @@ module.exports = {
   hotReload: true,
 
   transformToRequire: {
-    video: ["src", "poster"],
-    source: "src",
-    img: "src",
-    image: "xlink:href"
+    video: ['src', 'poster'],
+    source: 'src',
+    img: 'src',
+    image: 'xlink:href'
   }
 };

@@ -1,23 +1,23 @@
-"use strict";
+'use strict';
 
-const webpack = require("webpack");
-const webpackDevServer = require("webpack-dev-server");
-const chalk = require("chalk");
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const chalk = require('chalk');
 // const opn = require("opn");
 
-const webpackDevConf = require("./webpack.dev.conf");
-const { resolve } = require("./utils");
+const webpackDevConf = require('./webpack.dev.conf');
+const { resolve } = require('./utils');
 
 const port = 9090;
 
 // https://github.com/webpack/webpack-dev-server/issues/1377
 webpackDevConf.entry.app.unshift(
   `webpack-dev-server/client?http://localhost:${port}`,
-  "webpack/hot/dev-server"
+  'webpack/hot/dev-server'
 );
 
 const compiler = webpack(webpackDevConf);
-const server = new webpackDevServer(compiler, {
+const server = new WebpackDevServer(compiler, {
   contentBase: resolve(),
   hot: true,
   compress: true,
@@ -25,16 +25,16 @@ const server = new webpackDevServer(compiler, {
     errors: true,
     warnings: false
   },
-  quiet: true,
+  quiet: false,
   stats: {
     colors: true
   },
   historyApiFallback: false
 });
 
-server.listen(port, "0.0.0.0", () => {
+server.listen(port, '0.0.0.0', () => {
   const localUrl = `http://localhost:${port}`;
-  const networkUrl = `http://${require("address").ip()}:${port}`;
+  const networkUrl = `http://${require('address').ip()}:${port}`;
 
   console.log();
   console.log(
@@ -42,7 +42,7 @@ server.listen(port, "0.0.0.0", () => {
       `  App running at:`,
       `  - Local:   ${chalk.cyan(localUrl)}`,
       `  - Network: ${chalk.cyan(networkUrl)}`
-    ].join("\n")
+    ].join('\n')
   );
   console.log();
 });
