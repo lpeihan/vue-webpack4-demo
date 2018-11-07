@@ -22,5 +22,11 @@ module.exports = merge(baseWebpackConf, {
     new MiniCssExtractPlugin({
       filename: assetsPath('css/[name].[contenthash].css')
     })
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    },
+    runtimeChunk: true
+  }
 });

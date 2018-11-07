@@ -1,8 +1,8 @@
 <template>
     <div class="app">
-        ssdsssddd
-        <img src="../logo.png"
-             alt="">
+        <router-link to="/">home</router-link>
+        <router-link to="/user">user</router-link>
+        <router-view></router-view>
     </div>
 </template>
 
@@ -17,6 +17,5 @@ export default {
 <style lang="stylus">
 .app
     color: blue
-    background: url('../logo.png')
     transform: scale(1)
 </style>
