@@ -9,7 +9,8 @@
     "build": "cross-env NODE_ENV=production node build/build.js",
     "dev": "cross-env NODE_ENV=development nodemon build/dev-server.js",
     "lint": "eslint --ext .js --ext .vue src/",
-    "lint-fix": "eslint --fix --ext .js --ext .vue src/ build/"
+    "lint-fix": "eslint --fix --ext .js --ext .vue src/ build/",
+    "build:dll": "webpack --config build/webpack.dll.conf.js"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",

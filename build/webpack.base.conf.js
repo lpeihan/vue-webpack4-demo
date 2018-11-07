@@ -1,6 +1,7 @@
 'use strict';
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const webpack = require('webpack');
 
 const { resolve, assetsPath, cssLoader } = require('./utils');
 const vueLoaderConf = require('./vue-loader.conf');
@@ -31,7 +32,7 @@ module.exports = {
       {
         test: /\.js$/,
         use: 'babel-loader',
-        exclude: file => /node_modules/.test(file) && !/\.vue\.js/.test(file)
+        exclude: /node_modules/
       },
       {
         test: /\.(js|vue)$/,
@@ -77,5 +78,11 @@ module.exports = {
       }
     ]
   },
-  plugins: [new VueLoaderPlugin()]
+  plugins: [
+    new VueLoaderPlugin(),
+    new webpack.DllReferencePlugin({
+      context: resolve(),
+      manifest: require('./vendor-manifest.json')
+    })
+  ]
 };
