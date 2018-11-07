@@ -1,9 +1,8 @@
 'use strict';
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const { resolve, assetsPath } = require('./utils');
+const { resolve, assetsPath, cssLoader } = require('./utils');
 const vueLoaderConf = require('./vue-loader.conf');
 
 module.exports = {
@@ -45,24 +44,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          process.env.NODE_ENV === 'development'
-            ? 'vue-style-loader'
-            : MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader'
-        ]
+        use: cssLoader()
       },
       {
         test: /\.styl(us)?$/,
-        use: [
-          process.env.NODE_ENV === 'development'
-            ? 'vue-style-loader'
-            : MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'stylus-loader'
-        ]
+        use: cssLoader('stylus')
       },
       {
         test: /\.(png|jpe?g|gif)(\?.*)?$/,

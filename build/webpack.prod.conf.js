@@ -12,6 +12,7 @@ module.exports = merge(baseWebpackConf, {
   output: {
     filename: assetsPath('js/[name].[chunkhash].js')
   },
+  devtool: '#source-map',
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
