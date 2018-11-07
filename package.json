@@ -44,8 +44,9 @@
   },
   "nodemonConfig": {
     "verbose": false,
-    "watch": [
-      "build/**/*"
+    "ignore": [
+      "dist/**/*",
+      "src/**/*"
     ]
   },
   "browserslist": [
