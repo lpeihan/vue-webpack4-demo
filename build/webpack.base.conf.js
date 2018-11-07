@@ -1,7 +1,7 @@
 'use strict';
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const webpack = require('webpack');
+// const webpack = require('webpack');
 
 const { resolve, assetsPath, cssLoader } = require('./utils');
 const vueLoaderConf = require('./vue-loader.conf');
@@ -79,10 +79,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new VueLoaderPlugin(),
-    new webpack.DllReferencePlugin({
-      context: resolve(),
-      manifest: require('./vendor-manifest.json')
-    })
+    new VueLoaderPlugin()
+    // new webpack.DllReferencePlugin({
+    //   context: resolve(),
+    //   manifest: require('./vendor-manifest.json')
+    // })
   ]
 };
