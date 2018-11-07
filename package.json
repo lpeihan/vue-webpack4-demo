@@ -9,8 +9,7 @@
     "build": "cross-env NODE_ENV=production node build/build.js",
     "dev": "cross-env NODE_ENV=development nodemon build/dev-server.js",
     "lint": "eslint --ext .js --ext .vue src/",
-    "lint-fix": "eslint --fix --ext .js --ext .vue src/ build/",
-    "precommit": "lint-staged"
+    "lint-fix": "eslint --fix --ext .js --ext .vue src/ build/"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -69,16 +68,18 @@
     "last 2 versions",
     "not ie <= 8"
   ],
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.js": [
-      "npm run lint",
+      "npm run lint-fix",
       "git add"
     ],
     "*.vue": [
-      "npm run lint",
+      "npm run lint-fix",
       "git add"
     ]
   }
