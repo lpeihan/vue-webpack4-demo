@@ -1,10 +1,17 @@
 {
   "name": "webpack4",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "author": "",
+  "description": "vue-webpack4-template",
+  "author": "lpeihan <“291630202@qq.com”>",
   "license": "ISC",
+  "homepage": "https://lpeihan.github.io/webpack4/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lpeihan/webpack4"
+  },
+  "bugs": {
+    "url": "https://github.com/lpeihan/webpack4/issues"
+  },
   "scripts": {
     "build": "cross-env NODE_ENV=production node build/build.js",
     "dev": "cross-env NODE_ENV=development nodemon build/dev-server.js",
