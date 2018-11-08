@@ -4,13 +4,10 @@ module.exports = {
     parser: 'babel-eslint'
   },
   env: {
-    browser: true,
+    browser: true
   },
-  extends: [
-      "standard",
-      "plugin:vue/essential"
-  ],
+  extends: ['standard', 'plugin:vue/essential'],
   rules: {
-    semi: ["error", "always"]
+    semi: ['error', 'always']
   }
 };
