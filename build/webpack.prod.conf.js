@@ -35,7 +35,8 @@ module.exports = merge(baseWebpackConf, {
     new CopyWebpackPlugin([
       {
         from: resolve('public'),
-        to: resolve('dist')
+        to: resolve('dist'),
+        ignore: ['index.html', 'favicon.ico']
       }
     ])
   ],
