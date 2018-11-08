@@ -63,7 +63,8 @@
     "@babel/runtime-corejs2": "^7.1.5",
     "conventional-changelog-cli": "^2.0.11",
     "vue": "^2.5.17",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "nodemonConfig": {
     "verbose": false,

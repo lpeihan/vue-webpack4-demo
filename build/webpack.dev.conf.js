@@ -6,6 +6,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const webpack = require('webpack');
 
 const baseWebpackConf = require('./webpack.base.conf');
+const packageConfig = require('../package.json');
 const { resolve, config } = require('./utils');
 
 module.exports = merge(baseWebpackConf, {
@@ -13,12 +14,15 @@ module.exports = merge(baseWebpackConf, {
   devtool: '#cheap-module-eval-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+
     new HtmlWebpackPlugin({
+      title: packageConfig.name,
       filename: 'index.html',
       template: `${resolve('public/index.html')}`,
       favicon: `${resolve('public/favicon.ico')}`,
       inject: true
     }),
+
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
         messages: ['Your application is running here:'],

@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const baseWebpackConf = require('./webpack.base.conf');
+const packageConfig = require('../package.json');
 const { resolve, assetsPath } = require('./utils');
 
 module.exports = merge(baseWebpackConf, {
@@ -16,6 +17,7 @@ module.exports = merge(baseWebpackConf, {
   devtool: '#source-map',
   plugins: [
     new HtmlWebpackPlugin({
+      title: packageConfig.name,
       filename: 'index.html',
       template: `${resolve('public/index.html')}`,
       favicon: `${resolve('public/favicon.ico')}`,

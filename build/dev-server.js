@@ -3,7 +3,7 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const chalk = require('chalk');
-const opn = require('opn');
+// const opn = require('opn');
 
 const webpackDevConf = require('./webpack.dev.conf');
 const { resolve, config } = require('./utils');
@@ -40,6 +40,4 @@ server.listen(config.port, config.host, () => {
     ].join('\n')
   );
   console.log();
-
-  opn(config.localUrl);
 });
