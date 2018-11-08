@@ -9,13 +9,13 @@ const getters = {
 };
 
 const mutations = {
-  [SET_ABOUT_NAME] (state, name) {
+  [SET_ABOUT_NAME](state, name) {
     state.name = name;
   }
 };
 
 const actions = {
-  changeName ({ commit }, name) {
+  changeName({ commit }, name) {
     commit(SET_ABOUT_NAME, name);
   }
 };

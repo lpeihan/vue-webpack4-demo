@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production node build/build.js",
-    "dev": "cross-env NODE_ENV=development nodemon build/dev-server.js",
+    "dev": "cross-env NODE_ENV=development PORT=9090 nodemon build/dev-server.js",
     "lint": "eslint --ext .js --ext .vue src/",
     "lint-fix": "eslint --fix --ext .js --ext .vue src/ build/",
     "dll": "webpack --config build/webpack.dll.conf.js",

@@ -5,11 +5,11 @@ const WebpackDevServer = require('webpack-dev-server');
 // const opn = require('opn');
 
 const webpackDevConf = require('./webpack.dev.conf');
-const { resolve, config } = require('./utils');
+const { resolve } = require('./utils');
 
 // https://github.com/webpack/webpack-dev-server/issues/1377
 webpackDevConf.entry.app.unshift(
-  `webpack-dev-server/client?http://localhost:${config.port}`,
+  `webpack-dev-server/client?http://localhost:${process.env.PORT}`,
   'webpack/hot/dev-server'
 );
 
@@ -29,4 +29,4 @@ const server = new WebpackDevServer(compiler, {
   historyApiFallback: true
 });
 
-server.listen(config.port, config.host, () => {});
+server.listen(process.env.PORT, '0.0.0.0', () => {});

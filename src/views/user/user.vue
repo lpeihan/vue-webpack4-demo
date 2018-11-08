@@ -2,12 +2,12 @@
 <script>
 export default {
   name: 'user',
-  data () {
+  data() {
     return {
       title: 'jsx-user'
     };
   },
-  render () {
+  render() {
     return <div>{this.title}</div>;
   }
 };

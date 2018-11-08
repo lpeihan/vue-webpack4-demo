@@ -8,8 +8,11 @@ const chalk = require('chalk');
 
 const baseWebpackConf = require('./webpack.base.conf');
 const packageConfig = require('../package.json');
-const { resolve, config } = require('./utils');
+const { resolve } = require('./utils');
 const { devEnv } = require('../.env.js');
+
+const port = process.env.PORT;
+const ip = require('address').ip();
 
 module.exports = merge(baseWebpackConf, {
   mode: 'development',
@@ -32,8 +35,8 @@ module.exports = merge(baseWebpackConf, {
       compilationSuccessInfo: {
         messages: ['Your application is running here:'],
         notes: [
-          `- Local: ${chalk.cyan(config.getLocalUrl())}`,
-          `- Network: ${chalk.cyan(config.getNetworkUrl())}`
+          `- Local: ${chalk.cyan(`http://localhost:${port}`)}`,
+          `- Network: ${chalk.cyan(`http://${ip}:${port}`)}`
         ]
       }
     })
