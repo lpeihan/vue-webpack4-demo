@@ -33,6 +33,16 @@ exports.cssLoader = function (loader) {
     loaders.push({
       loader: `${loader}-loader`
     });
+
+    loaders.push({
+      loader: 'style-resources-loader',
+      options: {
+        patterns: [
+          exports.resolve('src/assets/styles/variables.styl'),
+          exports.resolve('src/assets/styles/mixins.styl')
+        ]
+      }
+    });
   }
 
   const styleLoader =
