@@ -15,12 +15,14 @@ const router = new Router({
     {
       path: '/user',
       name: 'user',
-      component: () => import('@/views/user/user')
+      component: () =>
+        import(/* webpackChunkName: 'user' */ '@/views/user/user')
     },
     {
       path: '/about',
       name: 'about',
-      component: () => import('@/views/about/about')
+      component: () =>
+        import(/* webpackChunkName: 'about' */ '@/views/about/about')
     }
   ]
 });
