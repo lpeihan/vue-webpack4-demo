@@ -6,24 +6,24 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 exports.config = {
   host: '0.0.0.0',
   port: 9090,
-  getLocalUrl () {
+  getLocalUrl() {
     return `http://localhost:${this.port}`;
   },
-  getNetworkUrl () {
+  getNetworkUrl() {
     return `http://${require('address').ip()}:${this.port}`;
   }
 };
 
-exports.resolve = function (dir = '') {
+exports.resolve = function(dir = '') {
   return path.join(__dirname, '..', dir);
 };
 
-exports.assetsPath = function (_path) {
+exports.assetsPath = function(_path) {
   //   return path.posix.join('static', _path);
   return path.posix.join(_path);
 };
 
-exports.cssLoader = function (loader) {
+exports.cssLoader = function(loader) {
   const loaders = [
     {
       loader: 'css-loader'
