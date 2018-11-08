@@ -10,7 +10,8 @@
     "dev": "cross-env NODE_ENV=development nodemon build/dev-server.js",
     "lint": "eslint --ext .js --ext .vue src/",
     "lint-fix": "eslint --fix --ext .js --ext .vue src/ build/",
-    "build:dll": "webpack --config build/webpack.dll.conf.js"
+    "build:dll": "webpack --config build/webpack.dll.conf.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -59,6 +60,7 @@
   "dependencies": {
     "@babel/runtime": "^7.1.2",
     "@babel/runtime-corejs2": "^7.1.5",
+    "conventional-changelog-cli": "^2.0.11",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1"
   },
