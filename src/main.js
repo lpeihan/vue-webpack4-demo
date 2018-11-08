@@ -6,6 +6,7 @@ import store from './store';
 import './assets/styles/index.css';
 
 Vue.config.productionTip = false;
+console.log(process.env);
 
 new Vue({
   router,

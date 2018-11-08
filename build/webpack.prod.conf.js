@@ -4,10 +4,12 @@ const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 
 const baseWebpackConf = require('./webpack.base.conf');
 const packageConfig = require('../package.json');
 const { resolve, assetsPath } = require('./utils');
+const { prodEnv } = require('../.env.js');
 
 module.exports = merge(baseWebpackConf, {
   mode: 'production',
@@ -16,6 +18,9 @@ module.exports = merge(baseWebpackConf, {
   },
   devtool: '#source-map',
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': prodEnv
+    }),
     new HtmlWebpackPlugin({
       title: packageConfig.name,
       filename: 'index.html',
