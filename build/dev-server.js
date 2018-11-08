@@ -2,7 +2,6 @@
 
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const chalk = require('chalk');
 // const opn = require('opn');
 
 const webpackDevConf = require('./webpack.dev.conf');
@@ -30,14 +29,4 @@ const server = new WebpackDevServer(compiler, {
   historyApiFallback: true
 });
 
-server.listen(config.port, config.host, () => {
-  console.log();
-  console.log(
-    [
-      `  Your application is running here: \n`,
-      `  - Local:   ${chalk.cyan(config.localUrl)}`,
-      `  - Network: ${chalk.cyan(config.networkUrl)}`
-    ].join('\n')
-  );
-  console.log();
-});
+server.listen(config.port, config.host, () => {});

@@ -2,6 +2,8 @@
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const webpack = require('webpack');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const chalk = require('chalk');
 
 const { resolve, assetsPath, cssLoader } = require('./utils');
 const vueLoaderConf = require('./vue-loader.conf');
@@ -80,6 +82,10 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
+    new ProgressBarPlugin({
+      format:
+        '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)'
+    }),
     new webpack.DllReferencePlugin({
       context: resolve(),
       manifest: require('./vendors-manifest.json')

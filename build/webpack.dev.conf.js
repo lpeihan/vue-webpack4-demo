@@ -4,6 +4,7 @@ const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const webpack = require('webpack');
+const chalk = require('chalk');
 
 const baseWebpackConf = require('./webpack.base.conf');
 const packageConfig = require('../package.json');
@@ -31,8 +32,8 @@ module.exports = merge(baseWebpackConf, {
       compilationSuccessInfo: {
         messages: ['Your application is running here:'],
         notes: [
-          `- Local: ${config.localUrl}`,
-          `- Network: ${config.networkUrl}`
+          `- Local: ${chalk.cyan(config.getLocalUrl())}`,
+          `- Network: ${chalk.cyan(config.getNetworkUrl())}`
         ]
       }
     })
