@@ -3,9 +3,10 @@
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const baseWebpackConf = require('./webpack.base.conf');
-const { assetsPath } = require('./utils');
+const { resolve, assetsPath } = require('./utils');
 
 module.exports = merge(baseWebpackConf, {
   mode: 'production',
@@ -16,12 +17,25 @@ module.exports = merge(baseWebpackConf, {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'index.html',
-      inject: true
+      template: `${resolve('public/index.html')}`,
+      favicon: `${resolve('public/favicon.ico')}`,
+      inject: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+        // https://github.com/kangax/html-minifier#options-quick-reference
+      }
     }),
     new MiniCssExtractPlugin({
       filename: assetsPath('css/[name].[contenthash].css')
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: resolve('public'),
+        to: resolve('dist')
+      }
+    ])
   ],
   optimization: {
     splitChunks: {

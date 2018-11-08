@@ -8,7 +8,8 @@ exports.resolve = function (dir = '') {
 };
 
 exports.assetsPath = function (_path) {
-  return path.posix.join('static', _path);
+  //   return path.posix.join('static', _path);
+  return path.posix.join(_path);
 };
 
 exports.cssLoader = function (loader) {

@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 const baseWebpackConf = require('./webpack.base.conf');
+const { resolve } = require('./utils');
 
 module.exports = merge(baseWebpackConf, {
   mode: 'development',
@@ -13,7 +14,8 @@ module.exports = merge(baseWebpackConf, {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'index.html',
+      template: `${resolve('public/index.html')}`,
+      favicon: `${resolve('public/favicon.ico')}`,
       inject: true
     })
   ]

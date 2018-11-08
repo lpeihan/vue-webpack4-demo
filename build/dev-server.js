@@ -18,7 +18,7 @@ webpackDevConf.entry.app.unshift(
 
 const compiler = webpack(webpackDevConf);
 const server = new WebpackDevServer(compiler, {
-  contentBase: resolve(),
+  contentBase: resolve('public'),
   hot: true,
   compress: true,
   overlay: {
