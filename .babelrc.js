@@ -10,6 +10,7 @@ module.exports = {
         useESModules: false
       }
     ],
-    require('@babel/plugin-syntax-dynamic-import')
+    require('@babel/plugin-syntax-dynamic-import'),
+    'transform-vue-jsx'
   ]
 };
