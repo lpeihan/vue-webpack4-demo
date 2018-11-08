@@ -27,7 +27,7 @@ const server = new WebpackDevServer(compiler, {
   stats: {
     colors: true
   },
-  historyApiFallback: false
+  historyApiFallback: true
 });
 
 server.listen(config.port, config.host, () => {
