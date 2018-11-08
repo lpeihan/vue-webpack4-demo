@@ -82,7 +82,7 @@ module.exports = {
     new VueLoaderPlugin(),
     new webpack.DllReferencePlugin({
       context: resolve(),
-      manifest: require('./vendor-manifest.json')
+      manifest: require('./vendors-manifest.json')
     })
   ]
 };
