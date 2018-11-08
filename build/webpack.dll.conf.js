@@ -8,11 +8,11 @@ const { resolve } = require('./utils');
 module.exports = {
   mode: 'production',
   entry: {
-    vendor: ['vue/dist/vue.esm.js', 'vue-router']
+    vendors: ['vue/dist/vue.esm.js', 'vue-router']
   },
   output: {
-    path: resolve('static/js'),
-    filename: '[name].dll.js',
+    path: resolve('public/js'),
+    filename: '[name]~dll.[chunkhash].js',
     library: '[name]_library'
   },
   module: {
