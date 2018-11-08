@@ -3,6 +3,13 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+exports.config = {
+  host: '0.0.0.0',
+  port: 9090,
+  localUrl: `http://localhost:9090`,
+  networkUrl: `http://${require('address').ip()}:9090`
+};
+
 exports.resolve = function (dir = '') {
   return path.join(__dirname, '..', dir);
 };

@@ -2,10 +2,11 @@
 
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const webpack = require('webpack');
 
 const baseWebpackConf = require('./webpack.base.conf');
-const { resolve } = require('./utils');
+const { resolve, config } = require('./utils');
 
 module.exports = merge(baseWebpackConf, {
   mode: 'development',
@@ -17,6 +18,15 @@ module.exports = merge(baseWebpackConf, {
       template: `${resolve('public/index.html')}`,
       favicon: `${resolve('public/favicon.ico')}`,
       inject: true
+    }),
+    new FriendlyErrorsWebpackPlugin({
+      compilationSuccessInfo: {
+        messages: ['Your application is running here:'],
+        notes: [
+          `- Local: ${config.localUrl}`,
+          `- Network: ${config.networkUrl}`
+        ]
+      }
     })
   ]
 });
