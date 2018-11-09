@@ -4,7 +4,8 @@ import App from './app';
 import router from './router';
 import store from './store';
 import axios from './utils/axios';
-import './assets/styles/index.css';
+
+import './assets/styles/index.styl';
 
 Vue.config.productionTip = false;
 

@@ -18,6 +18,7 @@ export default {
 
 <style lang="stylus">
 .app
-    color: $color-text
+    absolute: top 0
+    color: $color-text-l
     transform: scale(1)
 </style>
