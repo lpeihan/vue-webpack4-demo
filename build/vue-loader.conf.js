@@ -1,6 +1,6 @@
 module.exports = {
   preserveWhitepace: true,
-  hotReload: true,
+  hotReload: process.env.NODE_ENV === 'development',
 
   transformToRequire: {
     video: ['src', 'poster'],
