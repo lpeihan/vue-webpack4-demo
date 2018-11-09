@@ -14,7 +14,7 @@ const packageConfig = require('../package.json');
 const { resolve, assetsPath } = require('./utils');
 const { prodEnv } = require('../.env.js');
 
-module.exports = merge(baseWebpackConf, {
+const webpackProdConf = merge(baseWebpackConf, {
   mode: 'production',
   output: {
     filename: assetsPath('js/[name].[chunkhash].js')
@@ -94,3 +94,11 @@ module.exports = merge(baseWebpackConf, {
     ]
   }
 });
+
+if (process.env.npm_config_report) {
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+    .BundleAnalyzerPlugin;
+  webpackProdConf.plugins.push(new BundleAnalyzerPlugin());
+}
+
+module.exports = webpackProdConf;
