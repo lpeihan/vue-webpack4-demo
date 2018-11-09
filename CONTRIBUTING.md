@@ -68,4 +68,4 @@ const FOO_BAR = "FOO_BAR";
 
 ## GIT 提交规范
 
-https://blog.csdn.net/ligang2585116/article/details/80284819
+[**Angular 规范**](https://blog.csdn.net/ligang2585116/article/details/80284819)
