@@ -1,4 +1,5 @@
-import { cssSupport, throttle } from './index';
+import { throttle } from './index';
+import { cssSupport } from './dom';
 
 export default {
   install(Vue) {
