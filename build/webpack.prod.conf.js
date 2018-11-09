@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 
 const baseWebpackConf = require('./webpack.base.conf');
 const packageConfig = require('../package.json');
@@ -50,7 +51,8 @@ module.exports = merge(baseWebpackConf, {
         to: resolve('dist'),
         ignore: ['index.html', 'favicon.ico']
       }
-    ])
+    ]),
+    new InlineManifestWebpackPlugin('runtime') // 把 runtime 直接插入到 html，减少一次 http 请求
   ],
   optimization: {
     splitChunks: {
@@ -62,7 +64,7 @@ module.exports = merge(baseWebpackConf, {
         cache: true,
         exclude: /\.min\.js$/, // 过滤掉以".min.js"结尾的文件，我们认为这个后缀本身就是已经压缩好的代码
         parallel: true, // 开启并行压缩
-        extractComments: false, // 移除注释
+        extractComments: true, // 移除注释
         sourceMap: false,
         uglifyOptions: {
           compress: {

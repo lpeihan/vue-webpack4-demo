@@ -9,6 +9,7 @@ const { resolve, assetsPath, cssLoader } = require('./utils');
 const vueLoaderConf = require('./vue-loader.conf');
 
 module.exports = {
+  target: 'web',
   context: resolve(),
   entry: {
     app: ['./src/main.js']
