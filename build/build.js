@@ -1,21 +1,16 @@
 'use strict';
 
-const ora = require('ora');
 const rm = require('rimraf');
 const chalk = require('chalk');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.prod.conf');
 const { resolve } = require('./utils');
 
-const spinner = ora('building for production...');
-spinner.start();
-
 rm(resolve('dist'), err => {
   if (err) {
     throw err;
   }
   webpack(webpackConfig, function(err, stats) {
-    spinner.stop();
     if (err) {
       throw err;
     }
