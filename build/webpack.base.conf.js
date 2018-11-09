@@ -47,15 +47,19 @@ module.exports = {
         }
       },
       {
-        test: /\.svg/,
+        test: /\.svg$/,
         use: [
           {
             loader: 'svg-sprite-loader'
           },
           {
-            loader: 'svgo-loader'
+            loader: 'svgo-loader',
+            options: {
+              plugins: require('./svgo-config.json')
+            }
           }
-        ]
+        ],
+        include: [resolve('src/assets/icons')]
       },
       {
         test: /\.css$/,
@@ -66,12 +70,13 @@ module.exports = {
         use: cssLoader('stylus')
       },
       {
-        test: /\.(png|jpe?g|gif)(\?.*)?$/,
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
           name: assetsPath('imgs/[name].[hash:7].[ext]')
-        }
+        },
+        include: [resolve('src/assets/imgs')]
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
