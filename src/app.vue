@@ -10,6 +10,7 @@
 <script>
 export default {
   mounted() {
+    this.$http.get('api/banner');
     console.log('hdhddhdd');
   }
 };

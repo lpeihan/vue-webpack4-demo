@@ -26,7 +26,13 @@ const server = new WebpackDevServer(compiler, {
   stats: {
     colors: true
   },
-  historyApiFallback: true
+  historyApiFallback: true,
+  proxy: {
+    '/api': {
+      target: 'http://47.98.144.117:3000/',
+      pathRewrite: { '^/api': '/' }
+    }
+  }
 });
 
 server.listen(process.env.PORT, '0.0.0.0', () => {});
