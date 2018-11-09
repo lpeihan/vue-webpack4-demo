@@ -4,6 +4,10 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const webpack = require('webpack');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
+const HappyPack = require('happypack');
+const happyThreadPool = HappyPack.ThreadPool({
+  size: require('os').cpus().length
+});
 
 const { resolve, assetsPath, cssLoader } = require('./utils');
 const vueLoaderConf = require('./vue-loader.conf');
@@ -34,7 +38,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        use: 'babel-loader',
+        use: 'happypack/loader?id=babel',
         exclude: /node_modules/
       },
       {
@@ -106,6 +110,17 @@ module.exports = {
     new webpack.DllReferencePlugin({
       context: resolve(),
       manifest: require('./vendors-manifest.json')
+    }),
+    new HappyPack({
+      id: 'babel',
+      loaders: [
+        {
+          loader: 'babel-loader?cacheDirectory=true'
+        }
+      ],
+      threadPool: happyThreadPool,
+      // 允许 HappyPack 输出日志
+      verbose: true
     })
   ]
 };

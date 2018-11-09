@@ -15,7 +15,7 @@ exports.assetsPath = function(_path) {
 exports.cssLoader = function(loader) {
   const loaders = [
     {
-      loader: 'css-loader'
+      loader: 'css-loader?importLoaders=1'
     },
     {
       loader: 'postcss-loader'
