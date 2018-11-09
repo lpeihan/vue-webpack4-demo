@@ -1,3 +1,5 @@
+# 项目规范
+
 ## 项目命名规范
 
 ### 资源
@@ -6,8 +8,8 @@
 
 - 文件夹、文件夹名
 
-```js
-foo - bar / foo - bar.js;
+```
+foo-bar/foo-bar.js;
 ```
 
 - URL
@@ -30,12 +32,12 @@ http://foobar.com/foo-bar/:foo_bar_id
 
 - Vue 文件命名
 
-```js
+```
 todo.vue; // 这个为入口文件
-todo - list.vue;
-todo - item.vue;
-todo - header.vue;
-todo - footer.vue;
+todo-list.vue;
+todo-item.vue;
+todo-header.vue;
+todo-footer.vue;
 ```
 
 ## 变量
