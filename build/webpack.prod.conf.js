@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const baseWebpackConf = require('./webpack.base.conf');
 const packageConfig = require('../package.json');
@@ -55,6 +56,24 @@ module.exports = merge(baseWebpackConf, {
     splitChunks: {
       chunks: 'all'
     },
-    runtimeChunk: true
+    runtimeChunk: true,
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        exclude: /\.min\.js$/, // 过滤掉以".min.js"结尾的文件，我们认为这个后缀本身就是已经压缩好的代码
+        parallel: true, // 开启并行压缩
+        extractComments: false, // 移除注释
+        sourceMap: false,
+        uglifyOptions: {
+          compress: {
+            unused: true,
+            drop_console: true
+          },
+          output: {
+            comments: false // 过滤注释
+          }
+        }
+      })
+    ]
   }
 });

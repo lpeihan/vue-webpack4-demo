@@ -17,6 +17,7 @@ const compiler = webpack(webpackDevConf);
 const server = new WebpackDevServer(compiler, {
   contentBase: resolve('public'),
   hot: true,
+  inline: true,
   compress: true,
   overlay: {
     errors: true,
