@@ -1,5 +1,7 @@
 # Vue-webpack4-demo
 
+> 开箱即用的 vue-webpack4 脚手架
+
 ## Build Setup
 
 ```bash
