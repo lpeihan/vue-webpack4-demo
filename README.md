@@ -2,7 +2,7 @@
 
 > 开箱即用的 vue-webpack4 脚手架
 
-## Build Setup
+## Usage
 
 ```bash
 # install dependencies
