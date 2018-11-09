@@ -7,6 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const baseWebpackConf = require('./webpack.base.conf');
 const packageConfig = require('../package.json');
@@ -77,6 +78,18 @@ module.exports = merge(baseWebpackConf, {
             comments: false // 过滤注释
           }
         }
+      }),
+      new OptimizeCssAssetsPlugin({
+        assetNameRegExp: /\.css$/g,
+        cssProcessorOptions: {
+          safe: true,
+          autoprefixer: { disable: true },
+          mergeLonghand: false,
+          discardComments: {
+            removeAll: true
+          }
+        },
+        canPrint: true
       })
     ]
   }
