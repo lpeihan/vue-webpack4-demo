@@ -17,6 +17,11 @@ module.exports = merge(baseWebpackConf, {
     filename: assetsPath('js/[name].[chunkhash].js')
   },
   devtool: '#source-map',
+  performance: {
+    hints: 'warning',
+    maxEntrypointSize: 500000, // (300kb) The default value is 250000 (bytes).
+    maxAssetSize: 500000 // The default value is 250000 (bytes).
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': prodEnv
