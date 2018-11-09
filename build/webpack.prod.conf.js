@@ -58,7 +58,9 @@ module.exports = merge(baseWebpackConf, {
     splitChunks: {
       chunks: 'all'
     },
-    runtimeChunk: true,
+    runtimeChunk: {
+      name: 'runtime'
+    },
     minimizer: [
       new UglifyJsPlugin({
         cache: true,
