@@ -37,7 +37,8 @@ module.exports = merge(baseWebpackConf, {
         collapseWhitespace: true,
         removeAttributeQuotes: true
         // https://github.com/kangax/html-minifier#options-quick-reference
-      }
+      },
+      chunksSortMode: 'dependency'
     }),
     new MiniCssExtractPlugin({
       filename: assetsPath('css/[name].[contenthash].css')
