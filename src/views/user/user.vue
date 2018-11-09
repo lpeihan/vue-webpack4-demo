@@ -1,5 +1,6 @@
-
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'user',
   data() {
@@ -7,8 +8,11 @@ export default {
       title: 'jsx-user'
     };
   },
+  computed: {
+    ...mapGetters('user', ['name'])
+  },
   render() {
-    return <div>{this.title}</div>;
+    return <h1>{this.name}</h1>;
   }
 };
 </script>

@@ -8,7 +8,7 @@ const { resolve } = require('./utils');
 module.exports = {
   mode: 'production',
   entry: {
-    vendors: ['vue/dist/vue.esm.js', 'vue-router', 'vuex', 'axios']
+    vendors: ['vue/dist/vue.esm.js', 'vue-router', 'vuex', 'axios', 'dayjs']
   },
   output: {
     path: resolve('public/js'),
