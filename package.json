@@ -3,7 +3,6 @@
   "version": "1.0.1",
   "description": "vue-webpack4-template",
   "author": "lpeihan <“291630202@qq.com”>",
-  "license": "ISC",
   "homepage": "https://lpeihan.github.io/webpack4/",
   "repository": {
     "type": "git",
@@ -20,6 +19,15 @@
     "dll": "webpack --config build/webpack.dll.conf.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "analyz": "cross-env NODE_ENV=production npm_config_report=true npm run build"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.1.2",
+    "@babel/runtime-corejs2": "^7.1.5",
+    "axios": "^0.18.0",
+    "dayjs": "^1.7.7",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -81,15 +89,6 @@
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
     "webpack-merge": "^4.1.4"
-  },
-  "dependencies": {
-    "@babel/runtime": "^7.1.2",
-    "@babel/runtime-corejs2": "^7.1.5",
-    "axios": "^0.18.0",
-    "dayjs": "^1.7.7",
-    "vue": "^2.5.17",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
   },
   "nodemonConfig": {
     "verbose": false,
