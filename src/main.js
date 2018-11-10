@@ -11,6 +11,7 @@ import directives from './utils/directives';
 import icon from './components/icon';
 
 Vue.config.productionTip = false;
+Vue.config.devtools = process.env.NODE_ENV === 'development';
 
 Vue.prototype.$http = axios;
 
