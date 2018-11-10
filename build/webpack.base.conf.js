@@ -39,7 +39,7 @@ module.exports = {
       {
         test: /\.js$/,
         use: 'happypack/loader?id=babel',
-        exclude: /node_modules/
+        include: resolve('src')
       },
       {
         test: /\.(js|vue)$/,
