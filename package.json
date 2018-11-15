@@ -91,11 +91,13 @@
     "webpack-merge": "^4.1.4"
   },
   "nodemonConfig": {
+    "restartable": "rs",
     "verbose": false,
     "ignore": [
       "dist/**/*",
       "src/**/*"
-    ]
+    ],
+    "ext": "js json"
   },
   "husky": {
     "hooks": {
