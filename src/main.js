@@ -9,6 +9,7 @@ import axios from './utils/axios';
 import filters from './utils/filters';
 import directives from './utils/directives';
 import icon from './components/icon';
+import './utils/vconsole';
 
 Vue.config.productionTip = false;
 Vue.config.devtools = process.env.NODE_ENV === 'development';

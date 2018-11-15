@@ -63,3 +63,15 @@ export function throttle(fn, delay) {
     }
   };
 }
+
+export function getQueryString(name) {
+  const res = location.search.match(
+    new RegExp('[?&]' + name + '=([^&]+)', 'i')
+  );
+
+  if (res == null || res.length < 1) {
+    return null;
+  }
+
+  return res[1];
+}
