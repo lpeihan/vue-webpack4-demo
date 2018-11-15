@@ -13,7 +13,9 @@ if (query) {
 
       query === 'show' &&
         addEventListener('load', function() {
-          vconsole.show();
+          try {
+            vconsole.show();
+          } catch (__) {}
         });
     }
   });
