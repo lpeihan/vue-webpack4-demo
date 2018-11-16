@@ -8,6 +8,7 @@ const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
 const baseWebpackConf = require('./webpack.base.conf');
 const packageConfig = require('../package.json');
@@ -53,6 +54,9 @@ const webpackProdConf = merge(baseWebpackConf, {
         ignore: ['index.html', 'favicon.ico']
       }
     ]),
+    new AddAssetHtmlPlugin({
+      filepath: resolve('dist/vendors~dll.*.js')
+    }),
     new InlineManifestWebpackPlugin('runtime') // 把 runtime 直接插入到 html，减少一次 http 请求
   ],
   optimization: {

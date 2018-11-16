@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const webpack = require('webpack');
 const chalk = require('chalk');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
 const baseWebpackConf = require('./webpack.base.conf');
 const packageConfig = require('../package.json');
@@ -29,6 +30,10 @@ module.exports = merge(baseWebpackConf, {
       template: `${resolve('public/index.html')}`,
       favicon: `${resolve('public/favicon.ico')}`,
       inject: true
+    }),
+
+    new AddAssetHtmlPlugin({
+      filepath: resolve('public/js/vendors~dll.*.js')
     }),
 
     new FriendlyErrorsWebpackPlugin({
