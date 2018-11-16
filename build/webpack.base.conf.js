@@ -120,6 +120,7 @@ module.exports = {
       manifest: require('./vendors-manifest.json')
     }),
     createHappypack('babel', ['babel-loader?cacheDirectory=true']),
-    new HardSourceWebpackPlugin({}) // 加快第二次打包速度
+    new HardSourceWebpackPlugin(), // 加快第二次打包速度
+    new webpack.LoaderOptionsPlugin() // 加了 HardSourceWebpackPlugin 要加这个plugin，不然会导致报错
   ]
 };
