@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
 const Happypack = require('happypack');
-var HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+// const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const happyThreadPool = Happypack.ThreadPool({
   size: require('os').cpus().length
 });
@@ -119,8 +119,7 @@ module.exports = {
       context: resolve(),
       manifest: require('./vendors-manifest.json')
     }),
-    createHappypack('babel', ['babel-loader?cacheDirectory=true']),
-    new HardSourceWebpackPlugin(), // 加快第二次打包速度
-    new webpack.LoaderOptionsPlugin() // 加了 HardSourceWebpackPlugin 要加这个plugin，不然会导致报错
+    createHappypack('babel', ['babel-loader?cacheDirectory=true'])
+    // new HardSourceWebpackPlugin() // 加快第二次打包速度
   ]
 };
