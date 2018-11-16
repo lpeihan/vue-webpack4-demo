@@ -6,7 +6,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const { resolve } = require('./utils');
 
-module.exports = {
+const webpackDllConf = {
   mode: 'production',
   entry: {
     vendors: ['vue/dist/vue.esm.js', 'vue-router', 'vuex', 'axios', 'dayjs']
@@ -34,3 +34,11 @@ module.exports = {
     })
   ]
 };
+
+if (process.env.npm_config_argv.includes('--report')) {
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+    .BundleAnalyzerPlugin;
+  webpackDllConf.plugins.push(new BundleAnalyzerPlugin());
+}
+
+module.exports = webpackDllConf;

@@ -99,7 +99,7 @@ const webpackProdConf = merge(baseWebpackConf, {
   }
 });
 
-if (process.env.npm_config_report) {
+if (process.env.npm_config_argv.includes('--report')) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
     .BundleAnalyzerPlugin;
   webpackProdConf.plugins.push(new BundleAnalyzerPlugin());

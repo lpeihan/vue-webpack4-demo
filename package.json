@@ -17,8 +17,7 @@
     "lint": "eslint --ext .js --ext .vue src/",
     "lint-fix": "eslint --fix --ext .js --ext .vue src/ build/",
     "dll": "rimraf public/js/vendors~dll.*.js && webpack --config build/webpack.dll.conf.js",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "analyz": "npm_config_report=true npm run build"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "dependencies": {
     "@babel/runtime": "^7.1.2",
