@@ -35,7 +35,7 @@ module.exports = merge(baseWebpackConf, {
     new IncludeAssetsPlugin({
       assets: [{
         path: 'js',
-        glob: 'vendors~dll.*.js',
+        glob: 'vendors.dll.*.js',
         globPath: resolve('public/js')
       }],
       append: false

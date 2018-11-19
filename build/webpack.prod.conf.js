@@ -57,7 +57,7 @@ const webpackProdConf = merge(baseWebpackConf, {
     new IncludeAssetsPlugin({
       assets: [{
         path: 'js',
-        glob: 'vendors~dll.*.js',
+        glob: 'vendors.dll.*.js',
         globPath: resolve('public/js')
       }],
       append: false
@@ -66,7 +66,8 @@ const webpackProdConf = merge(baseWebpackConf, {
   ],
   optimization: {
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all',
+      automaticNameDelimiter: '.'
     },
     runtimeChunk: {
       name: 'runtime'

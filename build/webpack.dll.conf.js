@@ -13,7 +13,7 @@ const webpackDllConf = {
   },
   output: {
     path: resolve('public/js'),
-    filename: '[name]~dll.[chunkhash].js',
+    filename: '[name].dll.[chunkhash].js',
     library: '[name]_library'
   },
   module: {},
