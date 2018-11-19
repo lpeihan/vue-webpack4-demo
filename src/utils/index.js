@@ -70,7 +70,7 @@ export function throttle(fn, delay) {
  */
 export function getQueryString(name) {
   const res = location.search.match(
-    new RegExp('[?&]' + name + '=([^&]+)', 'i')
+    new RegExp("[?&]" + name + "=([^&]+)", "i")
   );
 
   if (res == null || res.length < 1) {
@@ -85,5 +85,5 @@ export function getQueryString(name) {
  * @param {String} str
  */
 export function trim(str) {
-  return str.replace(/^\s+|\s+$/g, '');
+  return str.replace(/^\s+|\s+$/g, "");
 }
