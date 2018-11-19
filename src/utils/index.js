@@ -64,6 +64,10 @@ export function throttle(fn, delay) {
   };
 }
 
+/**
+ * 获取 query
+ * @param {String} name
+ */
 export function getQueryString(name) {
   const res = location.search.match(
     new RegExp('[?&]' + name + '=([^&]+)', 'i')
@@ -74,4 +78,12 @@ export function getQueryString(name) {
   }
 
   return res[1];
+}
+
+/**
+ * 去除首尾空格
+ * @param {String} str
+ */
+export function trim(str) {
+  return str.replace(/^\s+|\s+$/g, '');
 }
