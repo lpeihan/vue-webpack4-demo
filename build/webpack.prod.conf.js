@@ -3,12 +3,12 @@
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const IncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 
 const baseWebpackConf = require('./webpack.base.conf');
 const packageConfig = require('../package.json');
@@ -47,15 +47,20 @@ const webpackProdConf = merge(baseWebpackConf, {
     new MiniCssExtractPlugin({
       filename: assetsPath('css/[name].[contenthash].css')
     }),
-    new CopyWebpackPlugin([
-      {
-        from: resolve('public'),
-        to: resolve('dist'),
-        ignore: ['index.html', 'favicon.ico']
-      }
-    ]),
-    new AddAssetHtmlPlugin({
-      filepath: resolve('public/js/vendors~dll.*.js')
+    // new CopyWebpackPlugin([
+    //   {
+    //     from: resolve('public'),
+    //     to: resolve('dist'),
+    //     ignore: ['index.html', 'favicon.ico']
+    //   }
+    // ]),
+    new IncludeAssetsPlugin({
+      assets: [{
+        path: 'js',
+        glob: 'vendors~dll.*.js',
+        globPath: resolve('dist/js')
+      }],
+      append: false
     }),
     new InlineManifestWebpackPlugin('runtime') // 把 runtime 直接插入到 html，减少一次 http 请求
   ],
