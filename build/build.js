@@ -3,7 +3,7 @@
 const rm = require('rimraf');
 const chalk = require('chalk');
 const webpack = require('webpack');
-const shell = require('shelljs');
+// const shell = require('shelljs');
 const webpackConfig = require('./webpack.prod.conf');
 const { resolve } = require('./utils');
 
@@ -12,8 +12,8 @@ rm(resolve('dist'), err => {
     throw err;
   }
 
-  shell.mkdir('-p', 'dist');
-  shell.cp('-R', 'public/*', 'dist');
+  //   shell.mkdir('-p', 'dist');
+  //   shell.cp('-R', 'public/*', 'dist');
 
   webpack(webpackConfig, function(err, stats) {
     if (err) {

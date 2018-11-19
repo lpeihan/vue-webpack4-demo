@@ -3,7 +3,7 @@
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
@@ -47,18 +47,18 @@ const webpackProdConf = merge(baseWebpackConf, {
     new MiniCssExtractPlugin({
       filename: assetsPath('css/[name].[contenthash].css')
     }),
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: resolve('public'),
-    //     to: resolve('dist'),
-    //     ignore: ['index.html', 'favicon.ico']
-    //   }
-    // ]),
+    new CopyWebpackPlugin([
+      {
+        from: resolve('public'),
+        to: resolve('dist'),
+        ignore: ['index.html', 'favicon.ico']
+      }
+    ]),
     new IncludeAssetsPlugin({
       assets: [{
         path: 'js',
         glob: 'vendors~dll.*.js',
-        globPath: resolve('dist/js')
+        globPath: resolve('public/js')
       }],
       append: false
     }),

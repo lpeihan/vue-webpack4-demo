@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production node build/build.js",
-    "dev": "cross-env NODE_ENV=development PORT=9090 node build/dev-server.js",
+    "dev": "cross-env NODE_ENV=development PORT=9090 nodemon build/dev-server.js",
     "lint": "eslint --ext .js --ext .vue src/",
     "lint-fix": "eslint --fix --ext .js --ext .vue src/ build/",
     "dll": "rimraf public/js/vendors~dll.*.js && webpack --config build/webpack.dll.conf.js",
@@ -69,7 +69,6 @@
     "postcss-loader": "^3.0.0",
     "progress-bar-webpack-plugin": "^1.11.0",
     "rimraf": "^2.6.2",
-    "shelljs": "^0.8.3",
     "style-loader": "^0.23.1",
     "style-resources-loader": "^1.2.1",
     "stylus": "^0.54.5",
