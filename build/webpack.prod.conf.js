@@ -55,7 +55,7 @@ const webpackProdConf = merge(baseWebpackConf, {
       }
     ]),
     new AddAssetHtmlPlugin({
-      filepath: resolve('dist/vendors~dll.*.js')
+      filepath: resolve('public/js/vendors~dll.*.js')
     }),
     new InlineManifestWebpackPlugin('runtime') // 把 runtime 直接插入到 html，减少一次 http 请求
   ],
