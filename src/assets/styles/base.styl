@@ -1,0 +1,32 @@
+//
+// Base
+// --------------------------------------------------
+
+html
+  font-size: $font-size-base
+  color: $color-text
+  line-height: 1
+  background: $color-bg
+
+//** 内外边距通常让各个浏览器样式的表现位置不同
+*
+  margin: 0
+  padding: 0
+
+//** 去掉列表前的标识, li 会继承
+ol, ul
+  list-style: none
+
+//** 重新设置标题的 font-size
+h1
+    font-size: 36px
+h2
+    font-size: 30px
+h3
+    font-size: 24px
+h4
+    font-size: $font-size-large-x // 18px
+h5
+    font-size: $font-size-base // 14px
+h6
+    font-size: $font-size-small // 12px
