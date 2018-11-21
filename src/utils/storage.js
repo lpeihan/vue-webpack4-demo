@@ -32,6 +32,17 @@ const api = {
   },
   clear() {
     this.storage.clear();
+  },
+  getAll() {
+    const storage = this.storage;
+    const ret = {};
+
+    for (let i = 0; i < this.storage.length; i++) {
+      const key = storage.key(i);
+      ret[key] = this.getItem(key);
+    }
+
+    return ret;
   }
 };
 
