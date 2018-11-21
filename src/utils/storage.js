@@ -3,7 +3,9 @@
  */
 const store = {
   storage: window.localStorage,
+  name: 'localStorage',
   session: {
+    name: 'sessionStorage',
     storage: window.sessionStorage
   }
 };
@@ -20,9 +22,23 @@ function deserialize(val) {
   }
 }
 
+function listener(name, action, key, val) {
+  const event = new Event(name);
+
+  Object.assign(event, {
+    action,
+    key,
+    val
+  });
+
+  window.dispatchEvent(event);
+}
+
 const api = {
   setItem(key, val) {
     this.storage.setItem(key, serialize(val));
+
+    listener(this.name, 'setItem', key, val);
   },
   getItem(key) {
     return deserialize(this.storage.getItem(key));
