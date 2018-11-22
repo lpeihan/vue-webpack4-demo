@@ -36,9 +36,7 @@ export function loadScript(src, cb, remove = false) {
   target.parentNode.insertBefore(script, target);
 
   // 这个主要是为了清除加载的大量的多余的script标签,比如 jsonp
-  if (remove) {
-    setTimeout(() => {
-      target.parentNode.removeChild(script);
-    });
-  }
+  remove && setTimeout(() => {
+    target.parentNode.removeChild(script);
+  });
 }
