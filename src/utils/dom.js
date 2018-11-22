@@ -15,7 +15,7 @@ export function cssSupport(attr, val) {
   return false;
 }
 
-export function loadScript(src, cb) {
+export function loadScript(src, cb, remove = false) {
   const script = document.createElement('script');
   script.type = 'text/javascript';
   script.src = src;
@@ -32,6 +32,13 @@ export function loadScript(src, cb) {
     }
   };
 
-  const s = document.getElementsByTagName('script')[0];
-  s.parentNode.insertBefore(script, s);
+  const target = document.getElementsByTagName('script')[0] || document.head;
+  target.parentNode.insertBefore(script, target);
+
+  // 这个主要是为了清除加载的大量的多余的script标签,比如 jsonp
+  if (remove) {
+    setTimeout(() => {
+      target.parentNode.removeChild(script);
+    });
+  }
 }
