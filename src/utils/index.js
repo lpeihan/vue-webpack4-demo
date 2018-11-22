@@ -3,24 +3,17 @@
  * @param {function} fn
  * @param {number} delay 毫秒
  */
-export function debounce(fn, delay) {
+export function debounce(func, delay) {
   let timer;
-  let ctx;
-  let args;
 
-  const execute = function() {
-    fn.apply(ctx, args);
-  };
-
-  return function() {
-    ctx = this;
-    args = arguments;
-
+  return function(...args) {
     if (timer) {
       clearTimeout(timer);
     }
 
-    timer = setTimeout(execute, delay);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
   };
 }
 
@@ -86,4 +79,38 @@ export function getQueryString(name) {
  */
 export function trim(str) {
   return str.replace(/^\s+|\s+$/g, '');
+}
+
+/**
+ * 打乱数组
+ * @param {Array} array
+ */
+export function shuffle(array) {
+  const items = array.slice();
+  let t, r, i;
+
+  for (i = items.length - 1; i > 0; i--) {
+    r = Math.round(Math.random() * i);
+
+    t = items[i];
+    items[i] = items[r];
+    items[r] = t;
+  }
+
+  return items;
+}
+
+export function getCookie(name) {
+  name = name + '=';
+  const cookies = document.cookie.split('; ');
+
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i];
+
+    if (cookie.indexOf(name) === 0) {
+      return decodeURIComponent(cookie.slice(name.length));
+    }
+  }
+
+  return null;
 }

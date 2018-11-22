@@ -2,7 +2,7 @@
 
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-// const opn = require('opn');
+const opn = require('opn');
 
 const webpackDevConf = require('./webpack.dev.conf');
 const { resolve } = require('./utils');
@@ -36,4 +36,6 @@ const server = new WebpackDevServer(compiler, {
   }
 });
 
-server.listen(process.env.PORT, '0.0.0.0', () => {});
+server.listen(process.env.PORT, '0.0.0.0', () => {
+  opn(`http://localhost:${process.env.PORT}`);
+});
