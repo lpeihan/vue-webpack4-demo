@@ -9,6 +9,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const IncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
+// const PrerenderSpaPlugin = require('prerender-spa-plugin');
 
 const baseWebpackConf = require('./webpack.base.conf');
 const packageConfig = require('../package.json');
@@ -18,7 +19,8 @@ const { prodEnv } = require('../.env.js');
 const webpackProdConf = merge(baseWebpackConf, {
   mode: 'production',
   output: {
-    filename: assetsPath('js/[name].[chunkhash].js')
+    filename: assetsPath('js/[name].[chunkhash].js'),
+    publicPath: '/'
   },
   devtool: '#source-map',
   performance: {
@@ -63,6 +65,13 @@ const webpackProdConf = merge(baseWebpackConf, {
       append: false
     }),
     new InlineManifestWebpackPlugin('runtime') // 把 runtime 直接插入到 html，减少一次 http 请求
+    // new PrerenderSpaPlugin({
+    //   staticDir: resolve('dist'),
+    //   routes: ['/', '/user'],
+    //   renderer: new PrerenderSpaPlugin.PuppeteerRenderer({
+    //     renderAfterDocumentEvent: 'render-event'
+    //   })
+    // })
   ],
   optimization: {
     splitChunks: {

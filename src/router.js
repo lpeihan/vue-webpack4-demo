@@ -23,6 +23,10 @@ const router = new Router({
       name: 'about',
       component: () =>
         import(/* webpackChunkName: 'about' */ '@/views/about/about')
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 });
