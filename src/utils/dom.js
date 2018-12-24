@@ -15,6 +15,7 @@ export function cssSupport(attr, val) {
   return false;
 }
 
+/* loadScript */
 export function loadScript(src, cb, remove = false) {
   const script = document.createElement('script');
   script.type = 'text/javascript';
@@ -39,4 +40,33 @@ export function loadScript(src, cb, remove = false) {
   remove && setTimeout(() => {
     target.parentNode.removeChild(script);
   });
+}
+
+/* hasClass */
+export function hasClass(el, className) {
+  const reg = new RegExp('(^|\\s)' + className + '(\\s|$)');
+  return reg.test(el.className);
+}
+
+/* addClass */
+export function addClass(el, className) {
+  if (hasClass(el, className)) {
+    return;
+  }
+
+  const newClass = el.className.split(' ');
+  newClass.push(className);
+  el.className = newClass.join(' ');
+}
+
+/* removeClass */
+export function removeClass(el, className) {
+  const reg = new RegExp('(^|\\s)' + className + '(\\s|$)', 'g');
+  el.className = el.className.replace(reg, ' ');
+}
+
+/* getData */
+export function getData(el, name) {
+  const prefix = 'data-';
+  return el.getAttribute(prefix + name);
 }
