@@ -6,6 +6,7 @@ const opn = require('opn');
 
 const webpackDevConf = require('./webpack.dev.conf');
 const { resolve } = require('./utils');
+const data = require('../mock/data.json');
 
 // https://github.com/webpack/webpack-dev-server/issues/1377
 webpackDevConf.entry.app.unshift(
@@ -15,6 +16,14 @@ webpackDevConf.entry.app.unshift(
 
 const compiler = webpack(webpackDevConf);
 const server = new WebpackDevServer(compiler, {
+  before(app) {
+    app.get('/api/data', (req, res) => {
+      res.json({
+        errno: 0,
+        data
+      });
+    });
+  },
   contentBase: resolve('public'),
   hot: true,
   inline: true,

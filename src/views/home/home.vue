@@ -29,6 +29,12 @@ import Skeleton from '@/components/skeleton/skeleton';
 export default {
   components: {
     Skeleton
+  },
+  created() {
+    this.$http({
+      url: '/data',
+      loading: true
+    });
   }
 };
 </script>
