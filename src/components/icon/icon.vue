@@ -1,8 +1,8 @@
 <template>
-    <svg class="icon"
-         :class="'icon-' + name">
-        <use :xlink:href="'#' + name"></use>
-    </svg>
+  <svg class="icon"
+    :class="'icon-' + name">
+    <use :xlink:href="'#' + name"></use>
+  </svg>
 </template>
 
 <script>
@@ -28,8 +28,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import "~@/assets/styles/icon.styl"
+
 .icon
-    display: inline-block
-    size: 1em
-    fill: currentColor
+  display: inline-block
+  size: 1em
+  fill: currentColor
 </style>

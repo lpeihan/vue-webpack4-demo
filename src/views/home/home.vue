@@ -3,6 +3,7 @@
     <skeleton>
         <div key="0" class="0">
             <img src="../../assets/imgs/logo.png" width="100">
+            <icon name="tips"></icon>
             <p>
                 <router-link to="/home">home</router-link>
                 <router-link to="/user">user</router-link>
@@ -41,6 +42,6 @@ export default {
 
 <style lang="stylus" scoped>
 .home
-    text-align: center
+  text-align: center
 
 </style>
