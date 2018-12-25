@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const CODE_OK = 1;
+
 const instance = axios.create({
   baseURL: '/api',
   timeout: 5000
@@ -22,6 +24,12 @@ instance.interceptors.response.use(
   res => {
     if (res.config.loading) {
       console.log('loading end');
+    }
+
+    if (res.data.code === CODE_OK) {
+      return res.data.data;
+    } else {
+      return Promise.reject(res.data);
     }
   },
   err => {

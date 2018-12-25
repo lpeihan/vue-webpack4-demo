@@ -17,9 +17,9 @@ webpackDevConf.entry.app.unshift(
 const compiler = webpack(webpackDevConf);
 const server = new WebpackDevServer(compiler, {
   before(app) {
-    app.get('/api/data', (req, res) => {
+    app.get('/api/example', (req, res) => {
       res.json({
-        errno: 0,
+        code: 0,
         data
       });
     });

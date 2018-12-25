@@ -26,15 +26,15 @@
 
 <script>
 import Skeleton from '@/components/skeleton/skeleton';
+import { getExample } from '@/api/example';
 
 export default {
   components: {
     Skeleton
   },
   created() {
-    this.$http({
-      url: '/data',
-      loading: true
+    getExample().then(() => {}).catch(err => {
+      console.log(err);
     });
   }
 };
