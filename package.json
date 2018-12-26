@@ -98,7 +98,9 @@
     "verbose": false,
     "ignore": [
       "dist/**/*",
-      "src/**/*"
+      "src/**/*",
+      "mock/**/*",
+      "public/**/*"
     ],
     "ext": "js json"
   },

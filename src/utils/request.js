@@ -1,15 +1,16 @@
 import axios from 'axios';
 
-const CODE_OK = 1;
+const CODE_OK = 0;
 
 const instance = axios.create({
   baseURL: '/api',
-  timeout: 5000
+  timeout: 5000,
+  _loading: true
 });
 
 instance.interceptors.request.use(
   config => {
-    if (config.loading) {
+    if (config._loading) {
       console.log('loading start');
     }
 
@@ -22,7 +23,7 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   res => {
-    if (res.config.loading) {
+    if (res.config._loading) {
       console.log('loading end');
     }
 
@@ -33,7 +34,7 @@ instance.interceptors.response.use(
     }
   },
   err => {
-    if (err.config.loading) {
+    if (err.config._loading) {
       console.log('loading end');
     }
 

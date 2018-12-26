@@ -32,10 +32,11 @@ export default {
   components: {
     Skeleton
   },
-  created() {
-    getExample().then(() => {}).catch(err => {
-      console.log(err);
+  async created() {
+    const res = await getExample().catch(err => {
+      console.error(err);
     });
+    console.log(res);
   }
 };
 </script>
