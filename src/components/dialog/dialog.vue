@@ -4,7 +4,6 @@
     @after-leave="afterLeave()"
     :z-index="zIndex"
     :closeOnClickOverlay="false"
-    @clickOnOverlay="clickOnOverlay"
   >
     <div class="dialog">
       <div class="dialog-header">{{title}}</div>
