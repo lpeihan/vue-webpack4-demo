@@ -1,0 +1,24 @@
+//
+// 全局的transition
+// --------------------------------------------------
+
+.v-fade
+  &-enter-active
+  &-leave-active
+    transition: opacity $transition-time
+  &-enter
+  &-leave-to
+    opacity: 0
+
+.v-slide
+  &-enter-active
+  &-leave-active
+  &-enter
+  &-leave-to
+  
+.v-zoom
+  &-enter-active
+  &-leave-active
+    transition: all $transition-time
+  &-enter
+  &-leave-to

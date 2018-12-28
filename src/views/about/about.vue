@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <h1 @click="$refs.popup.open()">{{name}}</h1>
-    <popup ref="popup" type="center"></popup>
+    <popup ref="popup">123</popup>
   </div>
 </template>
 

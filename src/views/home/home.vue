@@ -44,5 +44,6 @@ export default {
 <style lang="stylus" scoped>
 .home
   text-align: center
+  color: red
 
 </style>
