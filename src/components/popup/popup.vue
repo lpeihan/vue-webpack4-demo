@@ -45,7 +45,7 @@ export default {
       type: Boolean,
       default: true
     },
-    closeOnOverlay: {
+    closeOnClickOverlay: {
       type: Boolean,
       default: true
     }
@@ -64,8 +64,9 @@ export default {
       this.$emit('close');
     },
     onClickOverlay() {
-      if (this.closeOnOverlay) {
+      if (this.closeOnClickOverlay) {
         this.close();
+        this.$emit('clickOnOverlay');
       }
     }
   }

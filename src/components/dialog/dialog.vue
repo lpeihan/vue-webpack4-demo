@@ -1,5 +1,11 @@
 <template>
-  <popup ref="popup" @after-leave="afterLeave()" :z-index="zIndex">
+  <popup
+    ref="popup"
+    @after-leave="afterLeave()"
+    :z-index="zIndex"
+    :closeOnClickOverlay="false"
+    @clickOnOverlay="clickOnOverlay"
+  >
     <div class="dialog">
       <div class="dialog-header">{{title}}</div>
       <div class="dialog-content">{{message}}</div>
@@ -94,6 +100,7 @@ export default {
     .confirm
       flex: 1
       line-height: 44px
+
     .confirm
       border-left-1px()
       color: $color-link
