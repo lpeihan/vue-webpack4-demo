@@ -66,8 +66,8 @@ export default {
     onClickOverlay() {
       if (this.closeOnClickOverlay) {
         this.close();
-        this.$emit('clickOnOverlay');
       }
+      this.$emit('clickOverlay');
     }
   }
 };
