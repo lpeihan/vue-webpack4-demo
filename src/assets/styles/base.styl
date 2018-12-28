@@ -6,3 +6,9 @@ html
   font-size: $font-size-base
   color: $color-text
   background: $color-bg
+
+.clear-fix
+  &::after
+    content: ""
+    display: table
+    clear: both

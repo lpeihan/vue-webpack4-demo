@@ -29,9 +29,4 @@ export default {
 
 <style lang="stylus" scoped>
 @import "~@/assets/styles/icon.styl"
-
-.icon
-  display: inline-block
-  size: 1em
-  fill: currentColor
 </style>
