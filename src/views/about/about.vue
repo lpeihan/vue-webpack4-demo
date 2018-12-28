@@ -1,7 +1,6 @@
 <template>
   <div class="about">
-    <h1 @click="$refs.popup.open()">{{name}}</h1>
-    <popup ref="popup">123</popup>
+    <h1 @click="open()">{{name}}</h1>
     <div class="rank"></div>
     <div class="block"></div>
   </div>
@@ -9,15 +8,24 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import Popup from '@/components/popup/popup';
+import Dialog from '@/components/dialog';
 
 export default {
   name: 'about',
-  components: {
-    Popup
-  },
   computed: {
     ...mapGetters('about', ['name'])
+  },
+  methods: {
+    open() {
+      Dialog({
+        title: '标题',
+        message: '有赞是一家零售科技公司，致力于成为商家服务领域里最被信任的引领者'
+      }).then(() => {
+        console.log('confirm');
+      }).catch(() => {
+        console.log('cancel');
+      });
+    }
   }
 };
 </script>

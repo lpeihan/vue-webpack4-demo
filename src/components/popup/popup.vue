@@ -1,27 +1,34 @@
 <template>
   <div class="popup">
-    <transition :name="type">
-      <div class="popup-content" :class="`popup-${type}`" v-if="show">
+    <transition :name="type" @after-leave="$emit('after-leave', $event)">
+      <div
+        class="popup-content"
+        :class="`popup-${type}`"
+        v-show="show"
+        :style="{
+          'z-index': zIndex
+        }"
+      >
         <slot></slot>
       </div>
     </transition>
 
-    <transition name="overlay">
-      <div
-        class="popup-overlay"
-        v-if="show"
-        @touchmove="handleTouchmove($event)"
-        @click.stop="close()"
-      ></div>
-    </transition>
+    <overlay
+      :show="show"
+      @click="onClickOverlay()"
+      :z-index="zIndex - 1"
+      :show-overlay="showOverlay"
+    ></overlay>
   </div>
 </template>
 
 <script>
-import popup from '@/mixins/popup';
+import Overlay from '@/components/overlay';
 
 export default {
-  mixins: [popup],
+  components: {
+    Overlay
+  },
   props: {
     type: {
       type: String,
@@ -29,12 +36,37 @@ export default {
       validator(val) {
         return ['center', 'top', 'left', 'right', 'bottom'].indexOf(val) > -1;
       }
+    },
+    zIndex: {
+      type: Number,
+      default: 1000
+    },
+    showOverlay: {
+      type: Boolean,
+      default: true
+    },
+    closeOnOverlay: {
+      type: Boolean,
+      default: true
     }
   },
+  data() {
+    return {
+      show: false
+    };
+  },
   methods: {
-    handleTouchmove(e) {
-      e.preventDefault();
-      e.stopPropagation();
+    open() {
+      this.show = true;
+    },
+    close() {
+      this.show = false;
+      this.$emit('close');
+    },
+    onClickOverlay() {
+      if (this.closeOnOverlay) {
+        this.close();
+      }
     }
   }
 };
@@ -59,12 +91,11 @@ export default {
   &-center
     fixed: top 50% left 50%
     transform: translate3d(-50%, -50%, 0)
-    border-radius: 4px
-    width: 80%
+    border-radius: $border-radius-base
+    width: $width-modal
 
   &-content
     min-height: 100px
-    z-index: 101
     text-align: center
     overflow: hidden
     transition: all $transition-time
@@ -93,15 +124,4 @@ export default {
     &.left-enter
     &.left-leave-to
       transform: translate3d(-100%, 0, 0)
-
-  &-overlay
-    fixed: top left right bottom
-    z-index: 100
-    background: $color-overlay
-    transition: all $transition-time
-
-    &.overlay
-      &-enter
-      &-leave-to
-        opacity: 0
 </style>

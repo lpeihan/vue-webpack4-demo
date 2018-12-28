@@ -8,42 +8,7 @@ support-for-ie = false
 vendor-prefixes = official
 
 @import '~nib/index'
-
-// border-1px
-border-1px($color = $color-border, $radius = 2px, $style = solid)
-  &::after
-    content: ''
-    absolute: left top
-    display: block
-    size: 100%
-    border: 1px $style $color
-    box-sizing: border-box
-    border-radius: $radius
-    transform-origin: 0 0
-
-    @media (min-resolution: 2dppx)
-      size: 200%
-      border-radius: $radius * 2
-      transform: scale(0.5)
-
-    @media (min-resolution: 3dppx)
-      size: 300%
-      border-radius: $radius * 3
-      transform: scale(0.333)
-
-// border-bottom-1px
-border-bottom-1px($color = $color-border, $left = 0, $right = 0)
-  &::after
-    content: ''
-    absolute: left $left right $right bottom 0
-    height: 1px
-    background: $color
-
-    @media (min-resolution: 2dppx)
-      transform: scaleY(0.5)
-
-    @media (min-resolution: 3dppx)
-      transform: scaleY(0.333)
+@import './border.styl'
 
 // bg-image
 bg-image($url, $ext = '.png')
