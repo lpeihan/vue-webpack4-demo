@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Loading from '@/components/loading';
 
 const CODE_OK = 0;
 
@@ -11,7 +12,7 @@ const instance = axios.create({
 instance.interceptors.request.use(
   config => {
     if (config._loading) {
-      console.log('loading start');
+      Loading.open();
     }
 
     return config;
@@ -24,7 +25,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   res => {
     if (res.config._loading) {
-      console.log('loading end');
+      Loading.close();
     }
 
     if (res.data.code === CODE_OK) {
@@ -35,7 +36,7 @@ instance.interceptors.response.use(
   },
   err => {
     if (err.config._loading) {
-      console.log('loading end');
+      Loading.close();
     }
 
     return Promise.reject(err);

@@ -10,6 +10,9 @@
                 <router-link to="/about">about</router-link>
                 <router-link to="/locale">locale</router-link>
             </p>
+            <p>
+              <van-button @click="getExample()">获取异步数据</van-button>
+            </p>
         </div>
         <div key="1" slot="skeleton" class="1">
             <img src="../../assets/imgs/logo.png" width="100">
@@ -33,11 +36,14 @@ export default {
   components: {
     Skeleton
   },
-  async created() {
-    const res = await getExample().catch(err => {
-      console.error(err);
-    });
-    console.log(res);
+  methods: {
+    async getExample() {
+      const res = await getExample().catch(err => {
+        console.error(err);
+      });
+
+      console.log(res);
+    }
   }
 };
 </script>
