@@ -25,6 +25,7 @@ const server = new WebpackDevServer(compiler, {
     errors: true,
     warnings: false
   },
+  clientLogLevel: 'warning',
   quiet: true,
   stats: {
     colors: true
