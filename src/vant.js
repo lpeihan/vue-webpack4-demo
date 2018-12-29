@@ -1,4 +1,6 @@
-import { Button } from 'vant';
+import {
+  Button
+} from 'vant';
 
 export default (Vue) => {
   Vue.use(Button);

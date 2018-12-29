@@ -25,6 +25,12 @@ const router = new Router({
         import(/* webpackChunkName: 'about' */ '@/views/about/about')
     },
     {
+      path: '/locale',
+      name: 'locale',
+      component: () =>
+        import(/* webpackChunkName: 'locale' */ '@/views/locale/locale')
+    },
+    {
       path: '*',
       redirect: '/'
     }

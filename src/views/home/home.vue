@@ -8,6 +8,7 @@
                 <router-link to="/home">home</router-link>
                 <router-link to="/user">user</router-link>
                 <router-link to="/about">about</router-link>
+                <router-link to="/locale">locale</router-link>
             </p>
         </div>
         <div key="1" slot="skeleton" class="1">

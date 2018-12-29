@@ -11,18 +11,21 @@ import directives from './utils/directives';
 import Icon from './components/icon';
 import './utils/vconsole';
 import Vant from './vant';
+import i18n from './locales';
 
 Vue.config.productionTip = false;
 Vue.config.devtools = process.env.NODE_ENV === 'development';
 
 Vue.use(filters);
 Vue.use(directives);
+
 Vue.use(Vant);
 Vue.use(Icon);
 
 new Vue({
   router,
   store,
+  i18n,
   render: h => h(App)
 }).$mount('#app');
 
