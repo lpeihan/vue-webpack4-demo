@@ -99,6 +99,8 @@ export default {
     .confirm
       flex: 1
       line-height: 44px
+      &:active
+        background: $color-active
 
     .confirm
       border-left-1px()

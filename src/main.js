@@ -1,5 +1,6 @@
 import Vue from 'vue';
 
+import 'amfe-flexible';
 import App from './app';
 import router from './router';
 import store from './store';
@@ -9,12 +10,14 @@ import filters from './utils/filters';
 import directives from './utils/directives';
 import Icon from './components/icon';
 import './utils/vconsole';
+import Vant from './vant';
 
 Vue.config.productionTip = false;
 Vue.config.devtools = process.env.NODE_ENV === 'development';
 
 Vue.use(filters);
 Vue.use(directives);
+Vue.use(Vant);
 Vue.use(Icon);
 
 new Vue({

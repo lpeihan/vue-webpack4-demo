@@ -3,6 +3,7 @@
     <h1 @click="open()">{{name}}</h1>
     <div class="rank"></div>
     <div class="block"></div>
+    <van-button type="default">默认按钮</van-button>
   </div>
 </template>
 

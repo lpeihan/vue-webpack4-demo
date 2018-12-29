@@ -75,6 +75,8 @@ export default {
 
 <style lang="stylus" scoped>
 .popup
+  font-size: $font-size-base
+
   &-top
     fixed: top left right
 

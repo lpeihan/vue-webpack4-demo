@@ -24,8 +24,10 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 #app
+  font-size: $font-size-base
+
   .child-view
     fixed: top left right bottom
     transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1)
