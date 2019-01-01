@@ -35,8 +35,8 @@ export default {
 
     &.slider
       &-left-enter, &-right-leave-to
-        transform: translate(100%, 0)
+        transform: translate3d(100%, 0, 0)
 
       &-left-leave-to, &-right-enter
-        transform: translate(-100%, 0)
+        transform: translate3d(-100%, 0, 0)
 </style>
