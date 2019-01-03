@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Clipboard from 'vue-clipboard2';
 
 import 'amfe-flexible';
 import App from './app';
@@ -19,6 +20,7 @@ Vue.config.devtools = process.env.NODE_ENV === 'development';
 Vue.use(filters);
 Vue.use(directives);
 
+Vue.use(Clipboard);
 Vue.use(Vant);
 Vue.use(Icon);
 

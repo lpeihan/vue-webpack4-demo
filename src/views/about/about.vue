@@ -3,7 +3,7 @@
     <h1 @click="open()">{{name}}</h1>
     <div class="rank"></div>
     <div class="block"></div>
-    <van-button type="default">默认按钮</van-button>
+    <van-button type="default" @click="doCopy()">{{copyText}}</van-button>
   </div>
 </template>
 
@@ -16,6 +16,11 @@ export default {
   computed: {
     ...mapGetters('about', ['name'])
   },
+  data() {
+    return {
+      copyText: '复制这一段话'
+    };
+  },
   methods: {
     open() {
       Dialog({
@@ -25,6 +30,13 @@ export default {
         console.log('confirm');
       }).catch(() => {
         console.log('cancel');
+      });
+    },
+    doCopy() {
+      this.$copyText(this.copyText).then((e) => {
+        console.log('复制成功', e);
+      }, (err) => {
+        console.log('复制失败', err);
       });
     }
   }
