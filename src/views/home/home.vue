@@ -1,6 +1,17 @@
 <template>
   <div class="home">
-    <skeleton>
+    <img src="../../assets/imgs/logo.png" width="100">
+    <icon name="tips"></icon>
+    <p>
+      <router-link to="/home">home</router-link>
+      <router-link to="/user">user</router-link>
+      <router-link to="/about">about</router-link>
+      <router-link to="/locale">locale</router-link>
+    </p>
+    <p>
+      <van-button @click="getExample()">获取异步数据</van-button>
+    </p>
+    <!-- <skeleton>
         <div key="0" class="0">
             <img src="../../assets/imgs/logo.png" width="100">
             <icon name="tips"></icon>
@@ -24,7 +35,7 @@
             </p>
 
         </div>
-    </skeleton>
+    </skeleton> -->
   </div>
 </template>
 
